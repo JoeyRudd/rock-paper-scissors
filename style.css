@@ -8,8 +8,11 @@ body  {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     border: solid;
     border-color: red;
+    height: 100vh;
+    width: 100vw;
 }
 
 h1{
@@ -20,7 +23,18 @@ h1{
 }
 
 .selection {
-    justify-content: space-around;
+    display: flex;
+    align-items: space-between;
+    margin: 4rem;
+    padding:1rem;
+    border: solid;
+    border-color: red;
+}
+
+.selection, .btn {
+    align-self: space-around;
+    gap: 4rem;
+    color: blue;
     border: solid;
     border-color: red;
 }

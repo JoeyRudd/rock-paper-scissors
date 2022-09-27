@@ -1,34 +1,34 @@
 let playerScore = 0;
 let computerScore = 0;
+let roundCount = 0;
+let playerSelection = "";
 
-game();
+// when rock is clicked
+rock.addEventListener("click", () => {
+    // set player selection to rock
+    playerSelection = "rock";
+    // add 1 to round
+    roundCount++;
+    playRound();
+  });
 
-// play 5 rounds of game
-function game() {
-    // play game 5 times
-    for (let i = 0; i < 5; i++) {
-        playRound(playerScore, computerScore);
-     }
-     // if score is = then they tire
-     if (playerScore === computerScore) {
-        console.log("Tie game!")
-        console.log(playerScore);
-        console.log(computerScore);
-     }
-     // if player has higher score they win
-     if (playerScore > computerScore) {
-        console.log("You win the game!")
-        console.log(playerScore);
-        console.log(computerScore);
-     }
-     // if computer has higher score then player loses
-     if (playerScore < computerScore) {
-        console.log("You lost the game!")
-        console.log(playerScore);
-        console.log(computerScore);
-     }
-}
+// when paper is clicked
+paper.addEventListener("click", () => {
+    // set player selection to paper
+    playerSelection = "paper";
+    // add 1 round count
+    roundCount++;
+    playRound();
+  });
 
+// when scissors is clicked
+scissors.addEventListener("click", () => {
+    // set player selection to scissors
+    playerSelection = "scissors";
+    // add  1
+    roundCount++;
+    playRound();
+  });
 
 // gets the choice for computer either rock, paper, or scissors
 function getComputerChoice() {
@@ -53,9 +53,10 @@ function getComputerChoice() {
 }
 
 
+// plays round of game
 function playRound(playerCount, computerCount) {
     // ask player for choice
-    let playerSelection = prompt("Pick rock, paper, or scissors:").toLowerCase();
+    //let playerSelection = prompt("Pick rock, paper, or scissors:").toLowerCase();
 
     console.log(playerSelection);
 
@@ -63,7 +64,7 @@ function playRound(playerCount, computerCount) {
     computerSelection = getComputerChoice().toLowerCase();
     console.log(computerSelection);
 
-    let decision = ""
+    let decision = "";
 
     // if player selection and computer selection are the same, tie
     if (playerSelection === computerSelection) {
@@ -113,6 +114,41 @@ function playRound(playerCount, computerCount) {
         playerScore++;
 
     }
+    
+    // when 5 rounds done
+    if (roundCount === 5) {
+      gameResult();
+    }
 }
+
+// displays result of game and resets values
+function  gameResult(){
+
+    if (playerScore === computerScore) {
+        console.log("Tie game!")
+        playerScore = 0;
+        computerScore = 0;
+        //console.log(playerScore);
+        //console.log(computerScore);
+    }
+
+    // if player has higher score they win
+    if (playerScore > computerScore) {
+        console.log("You win the game!")
+        playerScore = 0;
+        computerScore = 0;
+        //playerScore = 0;
+        //computerScore = 0;
+    }
+
+    // if computer has higher score then player loses
+    if (playerScore < computerScore) {
+        console.log("You lost the game!")
+        playerScore = 0;
+        computerScore = 0;
+
+    }
+}  
+
 
 
