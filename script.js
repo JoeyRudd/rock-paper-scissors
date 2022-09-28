@@ -1,14 +1,14 @@
 let playerScore = 0;
 let computerScore = 0;
-let roundCount = 0;
+
 let playerSelection = "";
+let decision = "";
+
 
 // when rock is clicked
 rock.addEventListener("click", () => {
     // set player selection to rock
     playerSelection = "rock";
-    // add 1 to round
-    roundCount++;
     playRound();
   });
 
@@ -16,8 +16,6 @@ rock.addEventListener("click", () => {
 paper.addEventListener("click", () => {
     // set player selection to paper
     playerSelection = "paper";
-    // add 1 round count
-    roundCount++;
     playRound();
   });
 
@@ -25,8 +23,6 @@ paper.addEventListener("click", () => {
 scissors.addEventListener("click", () => {
     // set player selection to scissors
     playerSelection = "scissors";
-    // add  1
-    roundCount++;
     playRound();
   });
 
@@ -49,7 +45,7 @@ function getComputerChoice() {
         let computerSelection = "scissors";
         return computerSelection;
     }
-        
+  
 }
 
 
@@ -64,32 +60,26 @@ function playRound(playerCount, computerCount) {
     computerSelection = getComputerChoice().toLowerCase();
     console.log(computerSelection);
 
-    let decision = "";
-
     // if player selection and computer selection are the same, tie
     if (playerSelection === computerSelection) {
         decision = `You tie, ${playerSelection} ties ${computerSelection}`;
         playerScore++;
-        console.log(decision);
     }
 
     if (playerSelection === 'rock' & computerSelection === 'paper') {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
-        console.log(decision);
         computerScore++;
 
     }
 
     if (playerSelection === 'rock' & computerSelection === 'scissors') {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
-        console.log(decision);
         playerScore++;
 
     }
 
     if (playerSelection === 'paper' & computerSelection === 'rock') {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
-        console.log(decision);
         playerScore++;
 
 
@@ -97,57 +87,68 @@ function playRound(playerCount, computerCount) {
 
     if (playerSelection === 'paper' & computerSelection === 'scissors') {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
-        console.log(decision);
         computerScore++;
     }
 
     if (playerSelection === 'scissors' & computerSelection === 'rock') {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
-        console.log(decision);
         computerScore++;
 
     }
 
     if (playerSelection === 'scissors' & computerSelection === 'paper') {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
-        console.log(decision);
         playerScore++;
 
     }
     
+    // update player score on web page
+    document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
+
+    // update computer score on web page
+    document.getElementById("computerScore").innerHTML = `Player Score: ${computerScore}`;
+
+     // change statement on html
+     document.getElementById("decision").innerHTML = decision;
+
+     
     // when 5 rounds done
-    if (roundCount === 5) {
+    if (playerScore === 5 || computerScore === 5) {
       gameResult();
     }
+
 }
 
 // displays result of game and resets values
 function  gameResult(){
 
     if (playerScore === computerScore) {
-        console.log("Tie game!")
+        decision = "Tie game!"
         playerScore = 0;
         computerScore = 0;
-        //console.log(playerScore);
-        //console.log(computerScore);
+
     }
 
     // if player has higher score they win
     if (playerScore > computerScore) {
-        console.log("You win the game!")
+        decision = "You won the game!"
         playerScore = 0;
         computerScore = 0;
-        //playerScore = 0;
-        //computerScore = 0;
+  
     }
 
     // if computer has higher score then player loses
     if (playerScore < computerScore) {
-        console.log("You lost the game!")
+        decision = "You lost the game!"
         playerScore = 0;
         computerScore = 0;
 
     }
+
+
+    // change statement on html
+    document.getElementById("decision").innerHTML = decision; 
+
 }  
 
 
