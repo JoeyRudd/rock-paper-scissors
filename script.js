@@ -63,40 +63,39 @@ function playRound(playerCount, computerCount) {
     // if player selection and computer selection are the same, tie
     if (playerSelection === computerSelection) {
         decision = `You tie, ${playerSelection} ties ${computerSelection}`;
-        playerScore++;
     }
 
-    if (playerSelection === 'rock' & computerSelection === 'paper') {
+    if (playerSelection === "rock" & computerSelection === "paper") {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
         computerScore++;
 
     }
 
-    if (playerSelection === 'rock' & computerSelection === 'scissors') {
+    if (playerSelection === "rock" & computerSelection === "scissors") {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
         playerScore++;
 
     }
 
-    if (playerSelection === 'paper' & computerSelection === 'rock') {
+    if (playerSelection === "paper" & computerSelection === "rock") {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
         playerScore++;
 
 
     }
 
-    if (playerSelection === 'paper' & computerSelection === 'scissors') {
+    if (playerSelection === "paper" & computerSelection === "scissors") {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
         computerScore++;
     }
 
-    if (playerSelection === 'scissors' & computerSelection === 'rock') {
+    if (playerSelection === "scissors" & computerSelection === "rock") {
         decision = `You lose, ${computerSelection} beats ${playerSelection}`;
         computerScore++;
 
     }
 
-    if (playerSelection === 'scissors' & computerSelection === 'paper') {
+    if (playerSelection === "scissors" & computerSelection === "paper") {
         decision = `You win, ${playerSelection} beats ${computerSelection}`;
         playerScore++;
 
@@ -106,7 +105,7 @@ function playRound(playerCount, computerCount) {
     document.getElementById("playerScore").innerHTML = `Player Score: ${playerScore}`;
 
     // update computer score on web page
-    document.getElementById("computerScore").innerHTML = `Player Score: ${computerScore}`;
+    document.getElementById("computerScore").innerHTML = `Computer Score: ${computerScore}`;
 
      // change statement on html
      document.getElementById("decision").innerHTML = decision;
